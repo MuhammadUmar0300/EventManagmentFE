@@ -2,6 +2,7 @@
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -15,7 +16,7 @@ export default function RegisterPage() {
     ev.preventDefault();
 
     if (password !== confirmPassword) {
-      alert('Passwords do not match');
+      toast.error('Passwords do not match');
       return;
     }
 
@@ -26,10 +27,10 @@ export default function RegisterPage() {
         password,
         
       });
-      alert('Registration Successful')
+      toast.success('Registration Successful')
       setRedirect(true)
     }catch(e){
-     alert('Registration failed')
+        toast.error('Registration failed')
     }
   }
 

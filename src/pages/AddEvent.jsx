@@ -153,7 +153,7 @@
 import { useContext, useState } from 'react';
 import axios from 'axios';
 import { UserContext } from '../UserContext';
-
+import { toast } from 'react-toastify';
 export default function AddEvent() {
   const {user} = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -315,7 +315,7 @@ export default function AddEvent() {
             />
           </label>
           <button className='primary' type="submit" disabled={loading}>
-            {loading ? 'Uploading...' : 'Submit'}
+            {loading ? 'Uploading...' : 'Submit'};
           </button>
         </div>
       </form>

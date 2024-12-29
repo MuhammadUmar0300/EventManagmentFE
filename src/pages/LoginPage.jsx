@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import axios from 'axios'
 import { UserContext } from '../UserContext'
+import { toast } from 'react-toastify'
 
 
 export default function LoginPage() {
@@ -30,7 +31,7 @@ export default function LoginPage() {
       try{
         const {data} = await axios.post('/login', {email, password})
         setUser(data);
-        alert('Login success');
+        toast.success('Login success');
 
         if (rememberMe) {
           // If the user checked, store their email in localStorage.
@@ -43,7 +44,7 @@ export default function LoginPage() {
 
         setRedirect(true)
       }catch(e){
-        alert('Login failed');
+        toast.error('Login failed');
       }
   }
 
