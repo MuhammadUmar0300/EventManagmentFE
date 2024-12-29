@@ -52,7 +52,7 @@ if (!event) return '';
         )}
       </div>
 
-      {/* <img src="../src/assets/smit.png" alt="" className='rounded object-fill aspect-16:9'/>  */}
+      {/* <img src="./smit.png" alt="" className='rounded object-fill aspect-16:9'/>  */}
       {/* FIXME: This is a demo image after completing the create event function delete this */}
 
       <div className="flex justify-between mt-8 mx-2">
