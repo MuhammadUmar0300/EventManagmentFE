@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import { AiFillCalendar } from "react-icons/ai";
 import { MdLocationPin } from "react-icons/md";
 import { FaCopy, FaWhatsappSquare, FaFacebook } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function EventPage() {
   const {id} = useParams();
@@ -26,7 +27,7 @@ export default function EventPage() {
   const handleCopyLink = () => {
     const linkToShare = window.location.href;
     navigator.clipboard.writeText(linkToShare).then(() => {
-      alert('Link copied to clipboard!');
+      toast.success('Link copied to clipboard!');
     });
   };
 
@@ -62,7 +63,7 @@ if (!event) return '';
           </Link>
       </div>
       <div className="mx-2">
-          <h2 className="text-md md:text-xl font-bold mt-3 text-primarydark">{event.ticketPrice === 0? 'Free' : 'LKR. '+ event.ticketPrice}</h2>
+          <h2 className="text-md md:text-xl font-bold mt-3 text-primarydark">{event.ticketPrice === 0? 'Free' : 'Rs. '+ event.ticketPrice}</h2>
       </div>
       <div className="mx-2 mt-5 text-md md:text-lg truncate-3-lines">
         {event.description}

@@ -5,6 +5,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import {IoMdArrowBack} from 'react-icons/io'
 import { UserContext } from '../UserContext';
 import Qrcode from 'qrcode' //TODO:
+import { toast } from 'react-toastify';
 
 export default function PaymentSummary() {
     const {id} = useParams();
@@ -113,10 +114,11 @@ export default function PaymentSummary() {
     };
 //!posting the details to backend ----------------------------
     const response = await axios.post(`/tickets`, updatedTicketDetails);
-    alert("Ticket Created");
+    toast.success("Ticket Created");
     setRedirect(true)
     console.log('Success creating ticket', updatedTicketDetails)
   } catch (error) {
+    toast.error("Error creating ticket");
     console.error('Error creating ticket:', error);
   }
 
@@ -246,7 +248,7 @@ if (redirect){
               />
             </div>
             <div className="float-right">
-            <p className="text-sm font-semibold pb-2 pt-8">Total : LKR. {event.ticketPrice}</p>
+            <p className="text-sm font-semibold pb-2 pt-8">Total : Rs. {event.ticketPrice}</p>
             <Link to={'/'}>
               <button type="button" 
                 onClick = {createTicket}
@@ -270,7 +272,7 @@ if (redirect){
             <p className="text-xs">{event.eventDate.split("T")[0]},</p>
             <p className="text-xs pb-2"> {event.eventTime}</p>
             <hr className=" my-2 border-t pt-2 border-gray-400" />
-            <p className="float-right font-bold">LKR. {event.ticketPrice}</p>
+            <p className="float-right font-bold">Rs. {event.ticketPrice}</p>
             <p className="font-bold">Sub total: {event.ticketPrice}</p>
           </div>
           

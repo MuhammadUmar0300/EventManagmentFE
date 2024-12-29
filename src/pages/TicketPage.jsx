@@ -4,6 +4,7 @@ import {RiDeleteBinLine} from 'react-icons/ri'
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../UserContext";
+import { toast } from "react-toastify";
 
 export default function TicketPage() {
     const {user} = useContext(UserContext);
@@ -31,8 +32,9 @@ export default function TicketPage() {
         await axios.delete(`/tickets/${ticketId}`); 
         
         fetchTickets();
-        alert('Ticket Deleted');
+        toast.success('Ticket Deleted');
       } catch (error) {
+        toast.error('Error deleting ticket');
         console.error('Error deleting ticket:', error);
       }
     }
