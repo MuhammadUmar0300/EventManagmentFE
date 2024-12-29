@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { RxExit } from 'react-icons/rx';
 import { BsFillCaretDownFill } from 'react-icons/bs';
+import { toast } from "react-toastify";
 
 
 export default function Header() {
@@ -44,6 +45,7 @@ export default function Header() {
   //! Logout Function --------------------------------------------------------
   async function logout(){
     await axios.post('/logout');
+    toast.success('Login success');
     setUser(null);
   }
 //! Search input ----------------------------------------------------------------
